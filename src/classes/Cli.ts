@@ -184,7 +184,8 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
-          parseInt(answers.towingCapacity) || 0
+          [],
+          parseInt(answers.towingCapacity),
         );
         // push the truck to the vehicles array
         this.vehicles.push(truck);
@@ -402,9 +403,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Truck) {
               // call the findVehicleToTow method and pass the selected truck as an argument
-              if (this.vehicles[i] instanceof Truck) {
-                this.findVehicleToTow(this.vehicles[i]);
-              }
+              this.findVehicleToTow(this.vehicles[i] as Truck);
               return;
             }
           }
@@ -415,7 +414,9 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
               // call the wheelie method on the selected motorbike
-              this.vehicles[i].wheelie();
+              if (this.vehicles[i] instanceof Motorbike) {
+                (this.vehicles[i] as Motorbike).wheelie();
+              }
             }
           }
         }
