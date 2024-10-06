@@ -13,6 +13,7 @@ class Car extends Vehicle {
   weight: number;
   topSpeed: number;
   wheels: Wheel[];
+  towCapacity: number;
 
   // Constructor for the Car class
   constructor(
@@ -23,7 +24,7 @@ class Car extends Vehicle {
     year: number,
     weight: number,
     topSpeed: number,
-    wheels: Wheel[]
+    wheels: Wheel[],
   ) {
     // Call the constructor of the parent class, Vehicle
     super();
@@ -36,6 +37,7 @@ class Car extends Vehicle {
     this.year = year;
     this.weight = weight;
     this.topSpeed = topSpeed;
+    this.towCapacity = 0;
     // Check if the wheels array has 4 elements
     // If not, create 4 new Wheel objects
     // Otherwise, use the provided wheels array
@@ -45,6 +47,7 @@ class Car extends Vehicle {
       this.wheels = wheels;
     }
   }
+
 
   // Override the printDetails method from the Vehicle class
   override printDetails(): void {
@@ -59,6 +62,11 @@ class Car extends Vehicle {
     console.log(`Year: ${this.year}`);
     console.log(`Weight: ${this.weight} lbs`);
     console.log(`Top Speed: ${this.topSpeed} mph`);
+    console.log(`Wheels: ${this.wheels.length}`);
+    console.log(`Can wheelie: N/A`);
+    console.log(`Towing Capacity: N/A`);
+    console.log(`Tow: N/A`);
+    console.log(`Able to tow: N/A`);
 
     // Print details of the wheels
     console.log(
